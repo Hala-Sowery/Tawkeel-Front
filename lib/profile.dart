@@ -187,73 +187,76 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                     thickness: 1,
                   ),
                 ),
-                Container(
-                  width: width,
-                  height: height * 0.75,
-                  child: ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: height * 0.01, bottom: height * 0.01),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      right: width * 0.08, left: width * 0.08),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      RatingBar.builder(
-                                        itemSize: 15,
-                                        initialRating: 5,
-                                        minRating: 1,
-                                        direction: Axis.horizontal,
-                                        allowHalfRating: true,
-                                        itemCount: 5,
-                                        itemPadding: const EdgeInsets.symmetric(
-                                            horizontal: 1.0),
-                                        itemBuilder: (context, _) => Icon(
-                                          Icons.star,
-                                          color: orange,
-                                        ),
-                                        onRatingUpdate: (rating) {
-                                          print(rating);
-                                        },
-                                      ),
-                                      Text("اسم المستخدم",
-                                          textDirection: TextDirection.rtl,
-                                          style: GoogleFonts.ibmPlexSansArabic(
-                                            fontWeight: FontWeight.bold,
+                SingleChildScrollView(
+                  child: Container(
+                    width: width,
+                    height: height*0.70,
+                    child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: height * 0.01, bottom: height * 0.01),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: width * 0.08, left: width * 0.08),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        RatingBar.builder(
+                                          itemSize: 15,
+                                          initialRating: 5,
+                                          minRating: 1,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 5,
+                                          itemPadding: const EdgeInsets.symmetric(
+                                              horizontal: 1.0),
+                                          itemBuilder: (context, _) => Icon(
+                                            Icons.star,
                                             color: orange,
-                                            fontSize: 15,
-                                          )),
-                                    ],
+                                          ),
+                                          onRatingUpdate: (rating) {
+                                            print(rating);
+                                          },
+                                        ),
+                                        Text("اسم المستخدم",
+                                            textDirection: TextDirection.rtl,
+                                            style: GoogleFonts.ibmPlexSansArabic(
+                                              fontWeight: FontWeight.bold,
+                                              color: orange,
+                                              fontSize: 15,
+                                            )),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      right: width * 0.08,
-                                      left: width * 0.08,
-                                      top: height * 0.02),
-                                  child: Text("xxxxxxxxxxxxxxxxxxxxxx",
-                                      style: GoogleFonts.ibmPlexSansArabic(
-                                        fontWeight: FontWeight.bold,
-                                        color: orangeO,
-                                        fontSize: 12,
-                                      )),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: width * 0.08,
+                                        left: width * 0.08,
+                                        top: height * 0.02),
+                                    child: Text("xxxxxxxxxxxxxxxxxxxxxx",
+                                        style: GoogleFonts.ibmPlexSansArabic(
+                                          fontWeight: FontWeight.bold,
+                                          color: orangeO,
+                                          fontSize: 12,
+                                        )),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                  ),
                 ),
               ],
             ),
+            SizedBox(height: height*0.10,)
           ],
         ),
       ),
@@ -281,7 +284,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       actionsAlignment: MainAxisAlignment.center,
                       actions: [
                         Padding(
-                          padding: EdgeInsets.only(right: 10, left: 10),
+                          padding: EdgeInsets.only(right: 20, left: 20),
                           child: SizedBox(
                             width: width,
                             height: 60,
@@ -302,16 +305,16 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                           RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(7.0),
+                                              BorderRadius.circular(8.0),
                                           ))),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 10, left: 10,top: 10),
+                          padding: EdgeInsets.only(right: 20, left: 20,top: 10),
                           child: SizedBox(
                             width: width,
-                            height: 60,
+                            height: 40,
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.pop(context);

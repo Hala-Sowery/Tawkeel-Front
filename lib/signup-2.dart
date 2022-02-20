@@ -55,7 +55,7 @@ class _SignupState extends State<Signup_2> {
               padding: EdgeInsets.only(top: width*0.08,bottom: width*0.08,right: width*0.08),
               child: Container(alignment: Alignment.centerRight,
                 child: Text(
-                  "إنشاء حساب محامي",
+                  "إنشاء حساب محامي",textDirection: TextDirection.rtl,
                   style: GoogleFonts.ibmPlexSansArabic(
                       color: orange, fontSize: 28, fontWeight: FontWeight.bold),
                 ),

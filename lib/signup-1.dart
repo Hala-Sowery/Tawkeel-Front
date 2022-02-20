@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'before_signup.dart';
@@ -25,7 +26,8 @@ class _SignupState extends State<Signup_1> {
             Padding(
               padding: EdgeInsets.only(top: width*0.08,bottom: width*0.08,right: width*0.08),
               child: Container(alignment: Alignment.centerRight,
-                  child: Text("إنشاء حساب مستخدم",style:
+                  child: Text("إنشاء حساب مستخدم",textDirection: TextDirection.rtl,
+                    style:
               GoogleFonts.ibmPlexSansArabic(color: orange,fontSize: 28,fontWeight: FontWeight.bold),
               )),
             ),
