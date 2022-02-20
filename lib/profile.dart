@@ -28,9 +28,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               alignment: Alignment.center,
               clipBehavior: Clip.none,
               children: [
-                Container(height: height * 0.10, color: white1),
+                Container(height: height * 0.15, color: white1),
                 Positioned(
-                  top: 15,
+                  top: 50,
                   child: CircleAvatar(
                     radius: 47,
                     backgroundColor: Colors.white,
@@ -76,6 +76,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         },
                       ),
                       Text("اسم المستخدم",
+                          textDirection: TextDirection.rtl,
                           style: GoogleFonts.ibmPlexSansArabic(
                             fontWeight: FontWeight.bold,
                             color: orange,
@@ -110,7 +111,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       left: width * 0.08,
                       top: width * 0.02,
                       bottom: 5),
-                  child: Text("...هنا وصف عن المحامي",
+                  child: Text("هنا وصف عن المحامي...",
+                      textDirection: TextDirection.rtl,
                       style: GoogleFonts.ibmPlexSansArabic(
                         color: orangeO,
                         fontSize: 15,
@@ -123,6 +125,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       top: width * 0.06,
                       bottom: 5),
                   child: Text("الشهادات",
+                      textDirection: TextDirection.rtl,
                       style: GoogleFonts.ibmPlexSansArabic(
                         fontWeight: FontWeight.bold,
                         color: orange,
@@ -143,17 +146,20 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       top: width * 0.02,
                       bottom: 5),
                   child: Column(children: [
-                    Text("شهادة 1*",
+                    Text("*شهادة 1",
+                        textDirection: TextDirection.rtl,
                         style: GoogleFonts.ibmPlexSansArabic(
                           color: orangeO,
                           fontSize: 15,
                         )),
-                    Text("شهادة 2*",
+                    Text("*شهادة 2",
+                        textDirection: TextDirection.rtl,
                         style: GoogleFonts.ibmPlexSansArabic(
                           color: orangeO,
                           fontSize: 15,
                         )),
-                    Text("شهادة 3*",
+                    Text("*شهادة 3",
+                        textDirection: TextDirection.rtl,
                         style: GoogleFonts.ibmPlexSansArabic(
                           color: orangeO,
                           fontSize: 15,
@@ -167,6 +173,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       top: width * 0.06,
                       bottom: 5),
                   child: Text("التقييمات",
+                      textDirection: TextDirection.rtl,
                       style: GoogleFonts.ibmPlexSansArabic(
                         fontWeight: FontWeight.bold,
                         color: orange,
@@ -182,7 +189,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 ),
                 Container(
                   width: width,
-                  height: 900,
+                  height: height * 0.75,
                   child: ListView.builder(
                       itemCount: 3,
                       itemBuilder: (context, index) {
@@ -218,6 +225,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                         },
                                       ),
                                       Text("اسم المستخدم",
+                                          textDirection: TextDirection.rtl,
                                           style: GoogleFonts.ibmPlexSansArabic(
                                             fontWeight: FontWeight.bold,
                                             color: orange,
@@ -253,18 +261,98 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         width: width - 30,
         child: FloatingActionButton(
           backgroundColor: orange,
-          onPressed: () {},
-          child: Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_rounded,size: 22,)),
-              Text("احجز استشارة",style: GoogleFonts
-                .ibmPlexSansArabic(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontSize: 17,
-            )),
-          ]
-          ),
+          onPressed: () {
+            showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (_) => AlertDialog(
+                      title: Text("تأكيد اختيار المحامي",textDirection: TextDirection.rtl,
+                          style: GoogleFonts.ibmPlexSansArabic(
+                            fontWeight: FontWeight.bold,
+                            color: orange,
+                            fontSize: 20,
+                          )),
+                      content: Text("سعر الاستشارة ٢٠ دينار",textDirection: TextDirection.rtl,
+                          style: GoogleFonts.ibmPlexSansArabic(
+                            fontWeight: FontWeight.bold,
+                            color: orange,
+                            fontSize: 15,
+                          )),
+                      actionsAlignment: MainAxisAlignment.center,
+                      actions: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 10, left: 10),
+                          child: SizedBox(
+                            width: width,
+                            height: 60,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("تأكيد الإختيار",
+                                  style: GoogleFonts.ibmPlexSansArabic(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  )),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(orange),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(7.0),
+                                          ))),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 10, left: 10,top: 10),
+                          child: SizedBox(
+                            width: width,
+                            height: 60,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("إلغاء",
+                                  style: GoogleFonts.ibmPlexSansArabic(
+                                    fontWeight: FontWeight.bold,
+                                    color: orange,
+                                    fontSize: 15,
+                                  )),
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(7.0),
+                                      ))),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ));
+          },
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                size: 22,
+              ),
+            ),
+            Text("احجز استشارة",
+                style: GoogleFonts.ibmPlexSansArabic(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 17,
+                )),
+          ]),
           shape: RoundedRectangleBorder(),
         ),
       ),
