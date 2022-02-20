@@ -7,6 +7,7 @@ import 'package:tawkeel/signup-2.dart';
 import 'package:tawkeel/splash_screen.dart';
 import 'package:tawkeel/types_page.dart';
 import 'chat.dart';
+import 'layers_page.dart';
 
 void main() {
   runApp(
@@ -21,9 +22,7 @@ void main() {
           "chat" : (context) => const Chat(),
           "payment" : (context) => const Payment(),
           "profile" : (context) => const Profile(),
-
-          //"signIn": (context) => const Login(),
-          //"homeScreen": (context) => const homeScreen(),
+          "layers_page" : (context) => const LayersPage(),
         },
         debugShowCheckedModeBanner: false,
       ));

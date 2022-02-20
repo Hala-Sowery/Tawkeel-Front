@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-List<String> items = ["1", "2", "Third", "4"];
 Color orange = const Color.fromRGBO(246, 146, 121, 1);
+Color orangeO = const Color.fromRGBO(246, 146, 121, 0.7);
 Color white1 = const Color.fromRGBO(247, 247, 247, 1);
 Color white2 = const Color.fromRGBO(240, 240, 240, 1);
-
-_buildTab(
-    {required String text, required Color color, required TextStyle style}) {
-  return Container(
-    alignment: Alignment.center,
-    width: double.infinity,
-    decoration: ShapeDecoration(
-      shape: const RoundedRectangleBorder(),
-      color: color,
-    ),
-    child: Text(
-      text,
-      style: style,
-    ),
-  );
-}
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -31,180 +15,259 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
-  final List<Tab> myTabs = <Tab>[
-    Tab(text: 'LEFT'),
-    Tab(text: 'RIGHT'),
-  ];
-  late TabController _tabController;
-  int _activeIndex = 0;
-
   @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      vsync: this,
-      length: myTabs.length,
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController.dispose();
-  }
-
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    _tabController.addListener(() {
-      if (_tabController.indexIsChanging) {
-        setState(() {
-          _activeIndex = _tabController.index;
-        });
-      }
-    });
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: DefaultTabController(
-            length: 2,
-            child: Builder(builder: (context) {
-              return Scaffold(
-                  backgroundColor: Colors.white,
-                  appBar: AppBar(
-                    actions: [
-                      Padding(
-                        padding:  EdgeInsets.only(right: 20),
-                        child: Row(children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 5),
-                            child: Text("العودة للخلف",style: GoogleFonts.ibmPlexSansArabic(color: Colors.black54,fontSize: 8,),),
-                          ),
-                          Icon(Icons.arrow_forward_rounded,color: Colors.black54,),
-                        ]),
-                      ),
-              ],
-                    toolbarHeight: width*0.17,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              clipBehavior: Clip.none,
+              children: [
+                Container(height: height * 0.10, color: white1),
+                Positioned(
+                  top: 15,
+                  child: CircleAvatar(
+                    radius: 47,
                     backgroundColor: Colors.white,
-                    elevation: 0,
+                    child: CircleAvatar(
+                        child: Icon(
+                          Icons.person,
+                          color: orange,
+                          size: 35,
+                        ),
+                        radius: 45,
+                        backgroundColor: white2),
                   ),
-                  body: NestedScrollView(
-                      headerSliverBuilder: (context, value) {
-                        return [
-                          SliverToBoxAdapter(
-                            child: TabBar(
-                                controller: _tabController,
-                                indicatorWeight: 0,
-                                unselectedLabelColor: orange,
-                                indicatorSize: TabBarIndicatorSize.tab,
-                                indicator: BoxDecoration(color: Colors.white),
-                                tabs: [
-                                  Tab(
-                                    child: Container(
-                                      width: width / 2,
-                                      child: Align(
-                                        child: _buildTab(
-                                            text: 'محاميين متطوعين',
-                                            color: _tabController.index == 0
-                                                ? orange
-                                                : white1,
-                                            style:
-                                                GoogleFonts.ibmPlexSansArabic(
-                                              fontSize: 15,
-                                            )),
-                                      ),
-                                    ),
-                                  ),
-                                  Tab(
-                                    child: Container(
-                                      width: width / 2,
-                                      child: Align(
-                                        child: _buildTab(
-                                            text: 'محاميين نظاميين',
-                                            color: _tabController.index == 1
-                                                ? orange
-                                                : white1,
-                                            style:
-                                                GoogleFonts.ibmPlexSansArabic(
-                                              fontSize: 15,
-                                            )),
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                          )
-                        ];
-                      },
-                      body: Container(
-                          child: _tabController.index == 0
-                              ? TabBarView(children: [
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 30,
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: height * 0.10,
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(right: width * 0.08, left: width * 0.08),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RatingBar.builder(
+                        itemSize: 20,
+                        initialRating: 5,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 1.0),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: orange,
+                        ),
+                        onRatingUpdate: (rating) {
+                          print(rating);
+                        },
+                      ),
+                      Text("اسم المستخدم",
+                          style: GoogleFonts.ibmPlexSansArabic(
+                            fontWeight: FontWeight.bold,
+                            color: orange,
+                            fontSize: 25,
+                          )),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: width * 0.08,
+                      left: width * 0.08,
+                      top: width * 0.06,
+                      bottom: 5),
+                  child: Text("عن المحامي",
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        fontWeight: FontWeight.bold,
+                        color: orange,
+                        fontSize: 17,
+                      )),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(right: width * 0.08, left: width * 0.08),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: width * 0.08,
+                      left: width * 0.08,
+                      top: width * 0.02,
+                      bottom: 5),
+                  child: Text("...هنا وصف عن المحامي",
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        color: orangeO,
+                        fontSize: 15,
+                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: width * 0.08,
+                      left: width * 0.08,
+                      top: width * 0.06,
+                      bottom: 5),
+                  child: Text("الشهادات",
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        fontWeight: FontWeight.bold,
+                        color: orange,
+                        fontSize: 17,
+                      )),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(right: width * 0.08, left: width * 0.08),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: width * 0.08,
+                      left: width * 0.08,
+                      top: width * 0.02,
+                      bottom: 5),
+                  child: Column(children: [
+                    Text("شهادة 1*",
+                        style: GoogleFonts.ibmPlexSansArabic(
+                          color: orangeO,
+                          fontSize: 15,
+                        )),
+                    Text("شهادة 2*",
+                        style: GoogleFonts.ibmPlexSansArabic(
+                          color: orangeO,
+                          fontSize: 15,
+                        )),
+                    Text("شهادة 3*",
+                        style: GoogleFonts.ibmPlexSansArabic(
+                          color: orangeO,
+                          fontSize: 15,
+                        )),
+                  ]),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: width * 0.08,
+                      left: width * 0.08,
+                      top: width * 0.06,
+                      bottom: 5),
+                  child: Text("التقييمات",
+                      style: GoogleFonts.ibmPlexSansArabic(
+                        fontWeight: FontWeight.bold,
+                        color: orange,
+                        fontSize: 17,
+                      )),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(right: width * 0.08, left: width * 0.08),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+                Container(
+                  width: width,
+                  height: 900,
+                  child: ListView.builder(
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: height * 0.01, bottom: height * 0.01),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      right: width * 0.08, left: width * 0.08),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      RatingBar.builder(
+                                        itemSize: 15,
+                                        initialRating: 5,
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        itemPadding: const EdgeInsets.symmetric(
+                                            horizontal: 1.0),
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: orange,
                                         ),
-                                        Container(
-                                          width: width,
-                                          height: height,
-                                          child: ListView.builder(
-                                            itemCount: 7,
-                                            itemBuilder: (context, index) {
-                                              return Column(
-                                                children : [
-                                                ListTile(
-                                                  trailing: CircleAvatar(
-                                                    child: Icon(Icons.person,color: orange,),
-                                                    radius: 30, backgroundColor: white2),
-                                                  title: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .end,
-                                                    children: [
-                                                      Text("اسم المستخدم",
-                                                          style: GoogleFonts
-                                                              .ibmPlexSansArabic(
-                                                            color: orange,
-                                                            fontSize: 15,
-                                                          )),
-                                                  RatingBar.builder(
-                                                    itemSize: 15,
-                                                    initialRating: 5,
-                                                    minRating: 1,
-                                                    direction: Axis.horizontal,
-                                                    allowHalfRating: true,
-                                                    itemCount: 5,
-                                                    itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                                                    itemBuilder: (context, _) => Icon(
-                                                      Icons.star,
-                                                      color: orange,
-                                                    ),
-                                                    onRatingUpdate: (rating) {
-                                                      print(rating);
-                                                    },
-                                                  ),
-                                                  ],
-                                                  ),
-                                                ),
-                                                  index<6?
-                                                  Padding(
-                                                    padding:  EdgeInsets.only(right: 20,left: 20,bottom: 2,top: 2),
-                                                    child: Divider(thickness: 1,),
-                                                  )
-                                                      :
-                                                      SizedBox(height: 10,)
-                                              ]);
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        },
+                                      ),
+                                      Text("اسم المستخدم",
+                                          style: GoogleFonts.ibmPlexSansArabic(
+                                            fontWeight: FontWeight.bold,
+                                            color: orange,
+                                            fontSize: 15,
+                                          )),
+                                    ],
                                   ),
-                                  Text("hi"),
-                                ])
-                              : TabBarView(children: [
-                                  Text("hey"),
-                                  Text("hey"),
-                                ]))));
-            })));
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      right: width * 0.08,
+                                      left: width * 0.08,
+                                      top: height * 0.02),
+                                  child: Text("xxxxxxxxxxxxxxxxxxxxxx",
+                                      style: GoogleFonts.ibmPlexSansArabic(
+                                        fontWeight: FontWeight.bold,
+                                        color: orangeO,
+                                        fontSize: 12,
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: Container(
+        width: width - 30,
+        child: FloatingActionButton(
+          backgroundColor: orange,
+          onPressed: () {},
+          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_rounded,size: 22,)),
+              Text("احجز استشارة",style: GoogleFonts
+                .ibmPlexSansArabic(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 17,
+            )),
+          ]
+          ),
+          shape: RoundedRectangleBorder(),
+        ),
+      ),
+    );
   }
 }
