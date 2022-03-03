@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: 2.2.0
   flutter_rating_bar: ^4.0.0
+  dropdown_button2: ^1.1.1
+  customizable_dropdown: ^0.0.4
+
 
 
 dev_dependencies:

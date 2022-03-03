@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'before_signup.dart';
 import 'dart:ui' as ui;
 
+Color orange = const Color.fromRGBO(246, 146, 121, 1);
+Color white1 = const Color.fromRGBO(247, 247, 247, 1);
+Color white2 = const Color.fromRGBO(240, 240, 240, 1);
 
 class Signup_2 extends StatefulWidget {
   const Signup_2({Key? key}) : super(key: key);
@@ -18,6 +20,13 @@ TextEditingController pswController = TextEditingController();
 class _SignupState extends State<Signup_2> {
   @override
   Widget build(BuildContext context) {
+    String? selectedValue;
+    List<String> items = [
+      'قضاء نظامي',
+      'قضاء ديني',
+      'قضاء إداري',
+      'قضاء خاص',
+    ];
 
     bool isTablet;
     bool isPhone;
@@ -27,21 +36,18 @@ class _SignupState extends State<Signup_2> {
     final double width1 = size.width;
     final double height1 = size.height;
 
-
-    if(devicePixelRatio < 2 && (width1 >= 1000 || height1 >= 1000)) {
+    if (devicePixelRatio < 2 && (width1 >= 1000 || height1 >= 1000)) {
       isTablet = true;
       isPhone = false;
-    }
-    else if(devicePixelRatio == 2 && (width1 >= 1520 || height1 >= 1520)) {
+    } else if (devicePixelRatio == 2 && (width1 >= 1520 || height1 >= 1520)) {
       isTablet = true;
       isPhone = false;
-    }
-    else {
+    } else {
       isTablet = false;
       isPhone = true;
     }
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    //double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -52,10 +58,13 @@ class _SignupState extends State<Signup_2> {
               height: 40,
             ),
             Padding(
-              padding: EdgeInsets.only(top: width*0.08,bottom: width*0.08,right: width*0.08),
-              child: Container(alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(
+                  top: width * 0.08, bottom: width * 0.08, right: width * 0.08),
+              child: Container(
+                alignment: Alignment.centerRight,
                 child: Text(
-                  "إنشاء حساب محامي",textDirection: TextDirection.rtl,
+                  "إنشاء حساب محامي",
+                  textDirection: TextDirection.rtl,
                   style: GoogleFonts.ibmPlexSansArabic(
                       color: orange, fontSize: 28, fontWeight: FontWeight.bold),
                 ),
@@ -172,35 +181,13 @@ class _SignupState extends State<Signup_2> {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: EdgeInsets.only(right:width*0.08,left: width*0.08),
-            //   child: Container(
-            //     alignment: Alignment.center,
-            //     height: 70,
-            //     color: white1,
-            //     child: Padding(
-            //       padding: EdgeInsets.only(right:width*0.05),
-            //       child: TextFormField(
-            //           textDirection: TextDirection.rtl,
-            //           decoration: InputDecoration(
-            //             prefixIcon: Padding(
-            //               padding: EdgeInsets.only(left: 30),
-            //               child: Icon(Icons.upload,color: orange,),
-            //             ),
-            //             border: InputBorder.none,
-            //             hintTextDirection: TextDirection.rtl,
-            //             hintText: ("إرقاق شهادة مزاولة المهنة"),
-            //             hintStyle: GoogleFonts.ibmPlexSansArabic(color: Colors.black26,fontSize: 15),
-            //           )),
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.only(right: width * 0.08, left: width * 0.08),
               child: Container(
                   child: ListTile(
                     trailing: Padding(
-                      padding: EdgeInsets.only(right: isPhone? width * 0.015:width * 0.04),
+                      padding: EdgeInsets.only(
+                          right: isPhone ? width * 0.015 : width * 0.04),
                       child: Text("إرفاق شهادة مزاولة المهنة",
                           textAlign: TextAlign.end,
                           style: GoogleFonts.ibmPlexSansArabic(
@@ -210,7 +197,10 @@ class _SignupState extends State<Signup_2> {
                     ),
                     leading: Padding(
                       padding: const EdgeInsets.only(left: 10),
-                      child: InkWell(child: Icon(Icons.upload, color: orange),onTap: (){},),
+                      child: InkWell(
+                        child: Icon(Icons.upload, color: orange),
+                        onTap: () {},
+                      ),
                     ),
                   ),
                   height: 70,
@@ -229,54 +219,107 @@ class _SignupState extends State<Signup_2> {
                 ),
               ),
             ),
+            // Padding(
+            //   padding: EdgeInsets.only(right:width*0.08,left: width*0.08,bottom: width * 0.02),
+            //   child: Container(
+            //     width: width,
+            //     alignment: Alignment.centerRight,
+            //       height: 70,
+            //       color: white1,
+            //     child: DropdownButtonHideUnderline(
+            //       child: DropdownButton<String>(
+            //         items: items
+            //             .map<DropdownMenuItem<String>>((String value) {
+            //           return DropdownMenuItem<String>(
+            //             alignment: Alignment.centerRight,
+            //             value: value,
+            //             child: Text(value,
+            //                 textDirection: TextDirection.rtl,
+            //               style: GoogleFonts.ibmPlexSansArabic(
+            //               color: orange,
+            //               fontSize: 15,)),
+            //           );
+            //         })
+            //             .toList(),
+            //         // underline: Container(height: 0),
+            //         isExpanded: true,
+            //         hint: const Padding(
+            //                   padding: EdgeInsets.only(left: 23),
+            //                   child: Icon(
+            //                     Icons.arrow_drop_down,
+            //                     size: 35,
+            //                     color: Color.fromRGBO(246, 146, 121, 1),
+            //                   ),
+            //                 ),
+            //         onChanged: (value) => setState(() => 1),
+            //               value: selectedValue,
+            //         icon: Padding(
+            //                   padding:EdgeInsets.only(right: width * 0.05),
+            //                   child: Text(
+            //                     'اختر نوع القضاء',
+            //                     textDirection: TextDirection.rtl,
+            //                     style: GoogleFonts.ibmPlexSansArabic(
+            //                       color: Colors.black26,
+            //                       fontSize: 15,
+            //                     ),
+            //                     overflow: TextOverflow.ellipsis,
+            //                   ),
+            //                 ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.only(right: width * 0.08, left: width * 0.08),
               child: Container(
                 width: width,
                 height: 70,
                 color: white1,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButtonHideUnderline(
-
-                    // TODO : Align the icon to left and the text to right.
-                    child: Expanded(
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        alignment: Alignment.centerLeft,
-                        iconEnabledColor: orange,
-                        hint: Container(alignment: Alignment.centerRight,
-                          child: Text(
-                            "اختر نوع القضاء",
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.ibmPlexSansArabic(
-                                color: Colors.black26,
-                                fontSize: 15,
-                            ))),
-
-                        // hint: Text(
-                        //   "اختر نوع القضاء",
-                        //   textAlign: TextAlign.right,
-                        //   style: GoogleFonts.ibmPlexSansArabic(
-                        //     color: Colors.black26,
-                        //     fontSize: 15,
-                        //   ),
-                        // ),
-                        items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                          return DropdownMenuItem<String>(
-                            alignment: Alignment.centerRight,
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (_) {},
+                child: DropdownButtonHideUnderline(
+                  child: Expanded(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      alignment: Alignment.centerLeft,
+                      iconEnabledColor: orange,
+                      icon: Padding(
+                        padding: EdgeInsets.only(right: width * 0.05),
+                        child: Text(
+                          'اختر نوع القضاء',
+                          textDirection: TextDirection.rtl,
+                          style: GoogleFonts.ibmPlexSansArabic(
+                            color: Colors.black26,
+                            fontSize: 15,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
+                      hint: Padding(
+                        padding: EdgeInsets.only(left: 23),
+                        child: Icon(
+                          Icons.arrow_drop_down,
+                          size: 35,
+                          color: Color.fromRGBO(246, 146, 121, 1),
+                        ),
+                      ),
+                      onChanged: (value) => setState(() => 1),
+                      value: selectedValue,
+                        items: items.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  alignment: Alignment.centerRight,
+                                  value: value,
+                                  child: Text(value,
+                                      textDirection: TextDirection.rtl,
+                                    style: GoogleFonts.ibmPlexSansArabic(
+                                    color: orange,
+                                    fontSize: 15,)),
+                                );
+                              })
+                                  .toList(),
                     ),
                   ),
                 ),
               ),
             ),
-
             const SizedBox(
               height: 45,
             ),

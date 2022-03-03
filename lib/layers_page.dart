@@ -178,7 +178,6 @@ class _LayersPageState extends State<LayersPage> with SingleTickerProviderStateM
                                                         color: orange,
                                                       ),
                                                       onRatingUpdate: (rating) {
-                                                        print(rating);
                                                       },
                                                     ),
                                                   ],
@@ -242,7 +241,6 @@ class _LayersPageState extends State<LayersPage> with SingleTickerProviderStateM
                                                         color: orange,
                                                       ),
                                                       onRatingUpdate: (rating) {
-                                                        print(rating);
                                                       },
                                                     ),
                                                   ],

@@ -18,7 +18,7 @@ class ShowPages extends StatelessWidget {
           Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children:[ Padding(
               padding:  EdgeInsets.only(left:width*0.04 ),
-              child: Container(
+              child: SizedBox(
                 width: 150,height: 50,
                 child: ElevatedButton(
                   onPressed: () {
@@ -44,7 +44,7 @@ class ShowPages extends StatelessWidget {
             ),
               Padding(
                 padding:  EdgeInsets.only(right:width*0.04 ),
-                child: Container(
+                child: SizedBox(
                   width: 150,height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -73,7 +73,7 @@ class ShowPages extends StatelessWidget {
           Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:[ Padding(
                 padding:  EdgeInsets.only(left:width*0.04 ),
-                child: Container(
+                child: SizedBox(
                   width: 150,height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -99,7 +99,7 @@ class ShowPages extends StatelessWidget {
               ),
                 Padding(
                   padding:  EdgeInsets.only(right:width*0.04 ),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,height: 50,
                     child: ElevatedButton(
                       onPressed: () {
@@ -127,7 +127,7 @@ class ShowPages extends StatelessWidget {
           Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:[ Padding(
                 padding:  EdgeInsets.only(left:width*0.04 ),
-                child: Container(
+                child: SizedBox(
                   width: 150,height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -153,7 +153,7 @@ class ShowPages extends StatelessWidget {
               ),
                 Padding(
                   padding:  EdgeInsets.only(right:width*0.04),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,height: 50,
                     child: ElevatedButton(
                       onPressed: () {
@@ -181,7 +181,7 @@ class ShowPages extends StatelessWidget {
           Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:[ Padding(
                 padding:  EdgeInsets.only(left:width*0.04),
-                child: Container(
+                child: SizedBox(
                   width: 150,height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -207,7 +207,7 @@ class ShowPages extends StatelessWidget {
               ),
                 Padding(
                   padding:  EdgeInsets.only(right:width*0.04),
-                  child: Container(
+                  child: SizedBox(
                     width: 150,height: 50,
                     child: ElevatedButton(
                       onPressed: () {
@@ -235,7 +235,7 @@ class ShowPages extends StatelessWidget {
           Row( mainAxisAlignment: MainAxisAlignment.center,
               children:[ Padding(
                 padding:  EdgeInsets.only(left:width*0.04),
-                child: Container(
+                child: SizedBox(
                   width: 150,height: 50,
                   child: ElevatedButton(
                     onPressed: () {

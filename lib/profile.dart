@@ -72,7 +72,6 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           color: orange,
                         ),
                         onRatingUpdate: (rating) {
-                          print(rating);
                         },
                       ),
                       Text("اسم المستخدم",
@@ -101,7 +100,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 Padding(
                   padding:
                       EdgeInsets.only(right: width * 0.08, left: width * 0.08),
-                  child: Divider(
+                  child: const Divider(
                     thickness: 1,
                   ),
                 ),
@@ -135,7 +134,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 Padding(
                   padding:
                       EdgeInsets.only(right: width * 0.08, left: width * 0.08),
-                  child: Divider(
+                  child: const Divider(
                     thickness: 1,
                   ),
                 ),
@@ -183,12 +182,12 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 Padding(
                   padding:
                       EdgeInsets.only(right: width * 0.08, left: width * 0.08),
-                  child: Divider(
+                  child: const Divider(
                     thickness: 1,
                   ),
                 ),
                 SingleChildScrollView(
-                  child: Container(
+                  child: SizedBox(
                     width: width,
                     height: height*0.70,
                     child: ListView.builder(
@@ -222,7 +221,6 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                             color: orange,
                                           ),
                                           onRatingUpdate: (rating) {
-                                            print(rating);
                                           },
                                         ),
                                         Text("اسم المستخدم",
@@ -260,7 +258,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
           ],
         ),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         width: width - 30,
         child: FloatingActionButton(
           backgroundColor: orange,
@@ -284,7 +282,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       actionsAlignment: MainAxisAlignment.center,
                       actions: [
                         Padding(
-                          padding: EdgeInsets.only(right: 20, left: 20),
+                          padding: const EdgeInsets.only(right: 20, left: 20),
                           child: SizedBox(
                             width: width,
                             height: 60,
@@ -311,7 +309,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 20, left: 20,top: 10),
+                          padding: const EdgeInsets.only(right: 20, left: 20,top: 10),
                           child: SizedBox(
                             width: width,
                             height: 40,
@@ -342,7 +340,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                     ));
           },
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(right: 10),
               child: Icon(
                 Icons.arrow_back_rounded,
@@ -356,7 +354,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   fontSize: 17,
                 )),
           ]),
-          shape: RoundedRectangleBorder(),
+          shape: const RoundedRectangleBorder(),
         ),
       ),
     );
